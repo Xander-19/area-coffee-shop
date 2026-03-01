@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --color-sidebar: #1E1B4B;
+  --color-sidebar-hover: #2E2A6B;
+  --color-sidebar-active: #6D28D9;
+  --color-page-bg: #F0F0FF;
+  --color-surface: #FAFAFF;
+  --color-primary: #6D28D9;
+  --color-primary-hover: #5B21B6;
+  --color-heading: #1E1B4B;
+  --color-body: #4C4873;
+  --color-muted: #7C7AAE;
+  --color-border: #D8D5F0;
+  --color-table-header: #EEEDF8;
+  --color-input-bg: #FAFAFF;
+  --color-input-border: #C4C1E0;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #6366F1;
+  --color-orb-1: rgba(109, 40, 217, 0.22);
+  --color-orb-2: rgba(99, 102, 241, 0.18);
+}
+
+.dark {
+  --color-sidebar: #08080E;
+  --color-sidebar-hover: #12121E;
+  --color-sidebar-active: #2DD4BF;
+  --color-page-bg: #0A0A0F;
+  --color-surface: #12121A;
+  --color-primary: #2DD4BF;
+  --color-primary-hover: #14B8A6;
+  --color-heading: #F0FDFA;
+  --color-body: #94A3B8;
+  --color-muted: #64748B;
+  --color-border: #1E293B;
+  --color-table-header: #0F0F1A;
+  --color-input-bg: #0D0D16;
+  --color-input-border: #1E293B;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #6366F1;
+  --color-orb-1: rgba(45, 212, 191, 0.18);
+  --color-orb-2: rgba(99, 102, 241, 0.12);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-page-bg);
+  color: var(--color-body);
+  transition: background-color 0.3s, color 0.3s;
+  background-image:
+    radial-gradient(600px circle at 20% 30%, var(--color-orb-1) 0%, transparent 70%),
+    radial-gradient(500px circle at 80% 70%, var(--color-orb-2) 0%, transparent 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) transparent;
+}

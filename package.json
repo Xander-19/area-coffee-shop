@@ -1,0 +1,14 @@
+{
+  "name": "area-coffee-shop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Area Coffee Shop - Information & Ordering System",
+  "scripts": {
+    "dev": "pm2 start ecosystem.config.js && pm2 list && echo '' && echo '  Customer:  http://localhost:5173' && echo '  Admin:     http://localhost:5174' && echo '  Backend:   http://localhost:3000' && echo ''",
+    "stop": "pm2 stop all",
+    "restart": "pm2 restart all",
+    "status": "pm2 status",
+    "logs": "pm2 logs",
+    "delete": "pm2 delete all"
+  }
+}

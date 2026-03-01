@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --color-cream: #F5F0EB;
+  --color-surface: #FDFBF9;
+  --color-primary: #6D28D9;
+  --color-primary-hover: #5B21B6;
+  --color-secondary: #A78BFA;
+  --color-secondary-hover: #C4B5FD;
+  --color-heading: #1E1B4B;
+  --color-body: #4C4873;
+  --color-muted: #7C7AAE;
+  --color-border: #D8D5F0;
+  --color-accent: #EC4899;
+  --color-gradient-from: #6D28D9;
+  --color-gradient-via: #7C3AED;
+  --color-gradient-to: #A78BFA;
+  --color-footer-bg: #1E1B4B;
+  --color-footer-text: #E0E0FF;
+  --color-footer-muted: #A5A3D0;
+  --color-footer-border: #312E81;
+  --color-orb-1: rgba(109, 40, 217, 0.22);
+  --color-orb-2: rgba(167, 139, 250, 0.18);
+  --color-orb-3: rgba(236, 72, 153, 0.15);
+}
+
+.dark {
+  --color-cream: #0A0A0F;
+  --color-surface: #12121A;
+  --color-primary: #cd7911;
+  --color-primary-hover: #b97221;
+  --color-secondary: #0D9488;
+  --color-secondary-hover: #25b8ab;
+  --color-heading: #F0FDFA;
+  --color-body: #94A3B8;
+  --color-muted: #64748B;
+  --color-border: #1E293B;
+  --color-accent: #F472B6;
+  --color-gradient-from: #cd7911;
+  --color-gradient-via: #a65708;
+  --color-gradient-to: #30180d;
+  --color-footer-bg: #06060A;
+  --color-footer-text: #CBD5E1;
+  --color-footer-muted: #64748B;
+  --color-footer-border: #1E293B;
+  --color-orb-1: rgba(45, 212, 191, 0.18);
+  --color-orb-2: rgba(13, 148, 136, 0.14);
+  --color-orb-3: rgba(244, 114, 182, 0.10);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-body);
+  transition: background-color 0.3s, color 0.3s;
+  background-image:
+    radial-gradient(600px circle at 10% 10%, var(--color-orb-1) 0%, transparent 70%),
+    radial-gradient(500px circle at 90% 40%, var(--color-orb-2) 0%, transparent 70%),
+    radial-gradient(550px circle at 35% 80%, var(--color-orb-3) 0%, transparent 65%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  color: var(--color-heading);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) transparent;
+}
+
+.carousel-wrapper {
+  position: relative;
+  padding: 1rem 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carousel-scene {
+  width: 100%;
+  height: 260px;
+  perspective: 600px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-ring {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.carousel-ring--dragging {
+  transition: none;
+}
+
+.carousel-card {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 640px) {
+  .carousel-scene {
+    height: 340px;
+    perspective: 800px;
+  }
+  .carousel-ring,
+  .carousel-card {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-wrapper {
+    padding: 2rem 0;
+    overflow: visible;
+  }
+  .carousel-scene {
+    height: 420px;
+    perspective: 800px;
+  }
+  .carousel-ring,
+  .carousel-card {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.carousel-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.coverflow-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  pointer-events: auto;
+}
+
+.coverflow-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.coverflow-btn-prev {
+  left: 0.5rem;
+}
+
+.coverflow-btn-next {
+  right: 0.5rem;
+}
+
+/* ── Reusable Animations ──
+   Add any class to a className to animate it.
+   Combine with delay/duration helpers for fine control.
+
+   Animations:  .anim-fade-up, .anim-fade-down, .anim-fade-left,
+                .anim-fade-right, .anim-zoom-in, .anim-zoom-out,
+                .anim-fade, .anim-slide-up, .anim-bounce-in, .anim-float
+   Delays:      .anim-delay-100 … .anim-delay-500
+   Durations:   .anim-fast (0.4s), .anim-slow (1.2s)
+   Utilities:   .anim-once (no repeat), .anim-infinite
+*/
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes zoomOut {
+  from { opacity: 0; transform: scale(1.15); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.anim-fade-up    { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-fade-down  { animation: fadeDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-fade-left  { animation: fadeLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-fade-right { animation: fadeRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-zoom-in    { animation: zoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-zoom-out   { animation: zoomOut 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-fade       { animation: fadeIn 0.6s ease both; }
+.anim-slide-up   { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-bounce-in  { animation: bounceIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-float      { animation: float 3s ease-in-out infinite; }
+
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+.anim-delay-400 { animation-delay: 400ms; }
+.anim-delay-500 { animation-delay: 500ms; }
+
+.anim-fast     { animation-duration: 0.4s; }
+.anim-slow     { animation-duration: 1.2s; }
+.anim-once     { animation-iteration-count: 1; }
+.anim-infinite { animation-iteration-count: infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-down, .anim-fade-left, .anim-fade-right,
+  .anim-zoom-in, .anim-zoom-out, .anim-fade, .anim-slide-up,
+  .anim-bounce-in, .anim-float {
+    animation: none;
+  }
+}
+
+/* ── Scroll-triggered Animations ──
+   Add .scroll-reveal + a direction class to any element.
+   It stays hidden until it scrolls into view, then animates once.
+   Uses pure CSS animation-timeline (no JS needed).
+
+   Usage:  className="scroll-reveal scroll-fade-up"
+           className="scroll-reveal scroll-zoom-in scroll-delay-200"
+*/
+
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.scroll-fade-up    { transform: translateY(40px); }
+.scroll-reveal.scroll-fade-down  { transform: translateY(-40px); }
+.scroll-reveal.scroll-fade-left  { transform: translateX(-40px); }
+.scroll-reveal.scroll-fade-right { transform: translateX(40px); }
+.scroll-reveal.scroll-zoom-in    { transform: scale(0.85); }
+.scroll-reveal.scroll-bounce-in  { transform: scale(0.3); }
+
+.scroll-reveal.scroll-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+.scroll-delay-100 { transition-delay: 100ms; }
+.scroll-delay-200 { transition-delay: 200ms; }
+.scroll-delay-300 { transition-delay: 300ms; }
+.scroll-delay-400 { transition-delay: 400ms; }
+.scroll-delay-500 { transition-delay: 500ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
