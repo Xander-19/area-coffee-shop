@@ -41,16 +41,16 @@ export default function Menu() {
       <div className="max-w-6xl mx-auto">
         {/* Page header */}
         <header className="text-center mb-10">
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-[var(--color-heading)]">
+          <h1 className="anim-fade-up anim-delay-200 font-serif text-4xl sm:text-5xl font-bold text-[var(--color-heading)]">
             Our Menu
           </h1>
-          <p className="text-[var(--color-muted)] mt-2">
+          <p className="anim-fade-up anim-delay-300 text-[var(--color-muted)] mt-2">
             Handcrafted drinks made with care
           </p>
         </header>
 
         {/* Category tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-6">
+        <div className="anim-fade-left anim-delay-400 flex flex-wrap gap-2 justify-center mb-6">
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
@@ -79,7 +79,7 @@ export default function Menu() {
         </div>
 
         {/* Search */}
-        <form onSubmit={handleSearchSubmit} className="max-w-md mx-auto mb-10">
+        <form onSubmit={handleSearchSubmit} className="anim-fade-left anim-delay-400 max-w-md mx-auto mb-10">
           <div className="relative">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-muted)]" />
             <input
@@ -94,7 +94,7 @@ export default function Menu() {
 
         {/* Product grid */}
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
@@ -117,7 +117,7 @@ export default function Menu() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
             {products.map((product) => (
               <MenuCard key={product.id} product={product} />
             ))}

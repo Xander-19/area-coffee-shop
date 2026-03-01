@@ -29,7 +29,7 @@ export default function MenuCard({ product }) {
   };
 
   return (
-    <div className="rounded-2xl bg-[var(--color-surface)] shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+    <div className="scroll-reveal scroll-fade-up rounded-2xl bg-[var(--color-surface)] shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       {/* Image area */}
       <div className="relative h-48 bg-gradient-to-br from-[var(--color-gradient-from)] via-[var(--color-gradient-via)] to-[var(--color-gradient-to)] flex items-center justify-center">
         <FiCoffee className="w-16 h-16 text-white/60" />
@@ -45,7 +45,7 @@ export default function MenuCard({ product }) {
           {product.name}
         </h3>
         {product.description && (
-          <p className="text-sm text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden mt-1">
+          <p className="text-sm text-[var(--color-muted)] line-clamp-2 md:line-clamp-3 mt-1 break-words">
             {product.description}
           </p>
         )}

@@ -41,7 +41,7 @@ export default function Navbar() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
@@ -71,7 +71,9 @@ export default function Navbar() {
                 </NavLink>
               ))}
             </div>
-            <ThemeToggle />
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
             <Link
               to="/cart"
               className="relative p-2 text-[var(--color-body)] hover:text-[var(--color-primary)] transition-colors duration-200 rounded-lg hover:bg-[var(--color-border)]/50"
@@ -106,7 +108,7 @@ export default function Navbar() {
       {/* Mobile nav (slide-down) */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="px-4 py-4 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
@@ -127,14 +129,10 @@ export default function Navbar() {
                 {label}
               </NavLink>
             ))}
-            <Link
-              to="/cart"
-              onClick={closeMobileMenu}
-              className="px-4 py-3 rounded-lg text-[var(--color-body)] font-medium hover:bg-[var(--color-border)]/50 hover:text-[var(--color-heading)] transition-colors duration-200 flex items-center gap-2"
-            >
-              <FiShoppingCart className="w-5 h-5" />
-              Cart {getCartCount() > 0 && `(${getCartCount()})`}
-            </Link>
+            <div className="px-4 py-3 flex items-center gap-2 border-t border-[var(--color-border)] mt-2 pt-3">
+              <span className="text-sm font-medium text-[var(--color-body)]">Theme</span>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>

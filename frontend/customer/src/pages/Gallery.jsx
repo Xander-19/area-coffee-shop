@@ -55,20 +55,20 @@ export default function Gallery() {
   const currentItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
   return (
-    <main className="min-h-screen bg-[var(--color-cream)]">
+    <main className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Page header */}
         <header className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-[var(--color-heading)] tracking-tight">
+          <h1 className="anim-fade-up anim-delay-200 text-4xl sm:text-5xl font-bold text-[var(--color-heading)] tracking-tight">
             Our Gallery
           </h1>
-          <p className="mt-3 text-lg text-[var(--color-body)] max-w-2xl mx-auto">
+          <p className="anim-fade-up anim-delay-300 mt-3 text-lg text-[var(--color-body)] max-w-2xl mx-auto">
             A glimpse into our world of coffee
           </p>
         </header>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="anim-fade-left anim-delay-400 flex flex-wrap justify-center gap-2 mb-12">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -110,7 +110,7 @@ export default function Gallery() {
             {items.map((item, index) => (
               <div
                 key={item.id}
-                className="break-inside-avoid mb-4 group cursor-pointer"
+                className="scroll-reveal scroll-fade-up break-inside-avoid mb-4 group cursor-pointer"
                 style={{ animationDelay: `${index * 30}ms` }}
                 onClick={() => openLightbox(index)}
               >

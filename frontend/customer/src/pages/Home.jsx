@@ -6,7 +6,6 @@ const FEATURED_DRINKS = [
   { name: "Cappuccino", price: 130 },
   { name: "Matcha Latte", price: 150 },
   { name: "Caramel Frappe", price: 170 },
-  { name: "Mocha", price: 150 },
 ];
 
 const WHY_CHOOSE_US = [
@@ -34,7 +33,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-x-clip overflow-y-visible">
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center px-6 sm:px-12 lg:px-20 py-20 lg:py-0 -mt-18">
           <div className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0 anim-fade-left anim-delay-200">
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight font-bold text-white drop-shadow-lg mb-4 lg:mb-6">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[4em] leading-tight font-bold text-white drop-shadow-lg mb-4 lg:mb-6">
               Brewing Happiness, One Cup at a Time
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-white/95 mb-6 lg:mb-10 max-w-2xl">
@@ -49,7 +48,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="py-4 md:py-16 lg:py-8 anim-fade-up anim-delay-300">
+          <div className="py-10 md:py-16 lg:py-8 anim-fade-up anim-delay-300">
             <HeroCarousel />
           </div>
         </div>
@@ -57,16 +56,17 @@ export default function Home() {
 
       <section className="py-16 px-6 bg-[var(--color-surface)]/50">
         {/* FEATURED DRINKS */}
-        <section className="py-16 px-6">
-          <h2 className="scroll-reveal scroll-fade-up scroll-delay-200 font-serif text-3xl font-bold text-[var(--color-heading)] text-center mb-10">
-            Our Favorites
-          </h2>
-          <div className="flex gap-6 justify-center flex-wrap pb-4">
-            {FEATURED_DRINKS.map((drink) => (
-              <div
-                key={drink.name}
-                className="scroll-reveal scroll-fade-up scroll-delay-400 flex-shrink-0 w-64 rounded-2xl bg-[var(--color-surface)] shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-              >
+        <section className="py-16 p-4 sm:p-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="scroll-reveal scroll-fade-up scroll-delay-200 font-serif text-3xl font-bold text-[var(--color-heading)] text-center mb-10">
+              Our Favorites
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {FEATURED_DRINKS.map((drink) => (
+                <div
+                  key={drink.name}
+                  className="scroll-reveal scroll-fade-up scroll-delay-400 w-full rounded-2xl bg-[var(--color-surface)] shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                >
                 <div className="h-40 bg-gradient-to-br from-[var(--color-gradient-from)] via-[var(--color-gradient-via)] to-[var(--color-gradient-to)]" />
                 <div className="p-4">
                   <h3 className="font-semibold text-[var(--color-heading)]">
@@ -84,6 +84,7 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </section>
 
